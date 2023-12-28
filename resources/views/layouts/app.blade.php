@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    @include('templates.nav')
+    @include('../templates/nav')
     <div>@yield('content')</div>
     {{-- <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> --}}
 </body>

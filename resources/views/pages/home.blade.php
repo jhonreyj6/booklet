@@ -1,4 +1,4 @@
-@extends('index')
+@extends('layouts.app')
 @section('content')
     <div class="flex flex-row gap-4 px-4">
         @include('templates.aside')
