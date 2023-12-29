@@ -16,8 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('description');
             $table->string('author');
+            $table->string('genre');
+            $table->string('language');
             $table->integer('price');
             $table->integer('stocks');
+            $table->integer('rating')->default('0');
+            $table->string('product_image');
             $table->timestamps();
         });
     }
