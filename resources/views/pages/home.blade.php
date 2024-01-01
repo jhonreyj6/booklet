@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <div class="flex flex-row gap-4 px-4">
+    <div class="flex flex-row gap-8 px-4">
         @include('templates.aside')
         <div class="mt-20 w-full">
             {{-- Search --}}
@@ -11,7 +11,7 @@
                     value="{{ request()->query('query') }}"
                     placeholder="Search Book">
 
-                    <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none z-20 pe-4">
+                    <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-4">
                         <i class="fa-solid fa-magnifying-glass text-blue-700"></i>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                                         3946 reviews
                                     </div>
                                     <div class="mb-3 self-end text-center">
-                                        <a href="#!" class="py-1.5 rounded bg-blue-700 text-white px-2">Buy now</a>
+                                        <a href="/book?id={{$book->id}}&name?={{$book->name}}" class="py-1.5 rounded bg-blue-700 text-white px-2">Buy now</a>
                                     </div>
                                 </div>
                             </div>

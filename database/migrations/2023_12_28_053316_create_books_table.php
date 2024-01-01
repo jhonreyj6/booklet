@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('price');
             $table->integer('stocks');
             $table->integer('rating')->default('0');
-            $table->string('product_image');
+            $table->string('image');
             $table->timestamps();
         });
     }

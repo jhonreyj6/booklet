@@ -16,4 +16,8 @@ class Cart extends Model
     ];
 
     protected $table = 'carts';
+
+    public function getBookDetails() {
+        return $this->belongsTo('App\Models\Book', 'book_id', 'id');
+    }
 }

@@ -1,63 +1,74 @@
 @extends('layouts.app')
 @section('content')
-    <div class="mt-24 px-12">
-        <div class="bg-gray-50 border p-8 rounded">
-            <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
-                <div class="rounded-lg md:w-2/3">
-                    <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-                        <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                            alt="product-image" class="w-full rounded-lg sm:w-40" />
-                        <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-                            <div class="mt-5 sm:mt-0">
-                                <h2 class="text-lg font-bold text-gray-900">Nike Air Max 2019</h2>
-                                <p class="mt-1 text-xs text-gray-700">36EU - 4US</p>
-                            </div>
-                            <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
-                                <div class="flex items-center border-gray-100">
-                                    <span
-                                        class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-blue-500 hover:text-blue-50">
-                                        - </span>
-                                    <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number"
-                                        value="2" min="1" />
-                                    <span
-                                        class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50">
-                                        + </span>
-                                </div>
-                                <div class="flex items-center space-x-4">
-                                    <p class="text-sm">259.000 ₭</p>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="1.5" stroke="currentColor"
-                                        class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="container mx-auto mt-24">
+        <div class="flex shadow-md border my-10">
+            <div class="w-3/4 bg-white px-10 py-10">
+                <div class="flex justify-between border-b pb-8">
+                    <h1 class="font-semibold text-2xl">Shopping Cart</h1>
+                    <h2 class="font-semibold text-2xl">{{ $carts->count() }} Items</h2>
                 </div>
-                <!-- Sub total -->
-                <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
-                    <div class="mb-2 flex justify-between">
-                        <p class="text-gray-700">Subtotal</p>
-                        <p class="text-gray-700">$129.99</p>
-                    </div>
-                    <div class="flex justify-between">
-                        <p class="text-gray-700">Shipping</p>
-                        <p class="text-gray-700">$4.99</p>
-                    </div>
-                    <hr class="my-4" />
-                    <div class="flex justify-between">
-                        <p class="text-lg font-bold">Total</p>
-                        <div class="">
-                            <p class="mb-1 text-lg font-bold">$134.98 USD</p>
-                            <p class="text-sm text-gray-700">including VAT</p>
+                <div class="flex mt-10 mb-5">
+                    <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/4">Product Details</h3>
+                    <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/4 text-center">Price</h3>
+                    <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/4 text-center">Total</h3>
+                </div>
+                @foreach ($carts as $item)
+                    <div>
+                        <div class="flex items-center">
+                            <input id="checkbox-{{$item->id}}" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         </div>
+                        <div class="flex items-center -mx-8 px-6 py-5 mb-2">
+                            <div class="flex w-2/4"> <!-- product -->
+                                <div class="w-20">
+                                    <label for="checkbox-{{$item->id}}">
+                                        <img class="h-24"
+                                            src="https://drive.google.com/uc?id=18KkAVkGFvaGNqPy2DIvTqmUH_nk39o3z"
+                                            alt="">
+                                    </label>
+                                </div>
+                                <div class="flex flex-col justify-between ml-4 flex-grow">
+                                    <span class="font-bold text-sm">{{ $item->getBookDetails->name }}</span>
+                                    <span>by:</span>
+                                    <span class="text-blue-500">{{ $item->getBookDetails->author }}</span>
+                                    <a href="#"
+                                        class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+                                </div>
+                            </div>
+                            <span class="text-center w-1/4 font-semibold text-sm">$400.00</span>
+                            <span class="text-center w-1/4 font-semibold text-sm">$400.00</span>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+
+            <div id="summary" class="w-1/4 px-8 py-10">
+                <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
+                <div class="flex justify-between mt-10 mb-5">
+                    <span class="font-semibold text-sm uppercase">Items 3</span>
+                    <span class="font-semibold text-sm">590$</span>
+                </div>
+                <div>
+                    <label class="font-medium inline-block mb-3 text-sm uppercase">Shipping</label>
+                    <select class="block p-2 text-gray-600 w-full text-sm">
+                        <option>Standard shipping - $10.00</option>
+                    </select>
+                </div>
+                <div class="py-10">
+                    <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
+                    <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full">
+                </div>
+                <button class="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase">Apply</button>
+                <div class="border-t mt-8">
+                    <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+                        <span>Total cost</span>
+                        <span>$600</span>
                     </div>
                     <button
-                        class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check
-                        out</button>
+                        class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
                 </div>
             </div>
+
         </div>
     </div>
 @endsection

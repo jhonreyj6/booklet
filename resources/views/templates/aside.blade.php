@@ -1,4 +1,4 @@
-<div class="pt-20 bg-gray-50 border-r w-64 h-screen">
+<div class="pt-20 bg-gray-50 w-64 h-screen">
     <h3 class="text-xl font-bold mb-2">Search Filter</h3>
     <div class="flex flex-col gap-3">
         <div>

@@ -1,4 +1,10 @@
 import './bootstrap';
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 
 $('#english').click(function (e) {
     if($(this).is(':checked') && !window.location.href.includes('language')) {
@@ -32,3 +38,34 @@ $('#spanish').click(function (e) {
     }
 });
 
+$('#user-menu-button').click(function() {
+   $('#user-dropdown').toggle();
+});
+
+$('#logout').click(function (e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "/logout",
+        success: function (response) {
+            window.location.href = '/login';
+        }
+    });
+});
+
+$('.add-to-cart').click(function (e) {
+    e.preventDefault();
+    $.ajax({
+        type: "POST",
+        url: "/cart",
+        data: {
+            id: $(this).data('id'),
+        },
+        success: function (response) {
+            $(e.target).text('Added');
+            $(e.target).attr('disabled', true);
+            $(e.target).addClass('opacity-50');
+            $(e.target).removeClass('add-to-cart');
+        }
+    });
+});
