@@ -34,7 +34,7 @@
                             alt="user photo">
                     </button>
                     <!-- Dropdown menu -->
-                    <div class="z-50 w-44 hidden absolute right-0 my-4 text-base list-none bg-white divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600"
+                    <div class="z-50 w-44 hidden absolute right-0 my-4 text-base list-none bg-white divide-y divide-gray-100 shadow"
                         id="user-dropdown">
                         <div class="px-4 py-3">
                             <span class="block text-sm text-gray-900 dark:text-white"></span>
@@ -43,20 +43,20 @@
                         <ul class="py-2 flex flex-col justify-items-start" aria-labelledby="user-menu-button">
                             <li>
                                 <a href="/cart"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Cart</a>
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cart</a>
                             </li>
                             <li>
                                 <a href="/order"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Order</a>
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Order</a>
                             </li>
                             <li>
                                 <a href="#"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Setting</a>
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Setting</a>
                             </li>
                             <li>
                                 <a href="#!"
                                     id="logout"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Logout</a>
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
                             </li>
                         </ul>
                     </div>

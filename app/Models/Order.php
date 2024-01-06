@@ -7,7 +7,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-
-
     use HasFactory;
+
+    protected $fillable = [
+        'user_id',
+        'status',
+        'order_items_id',
+        'total',
+    ];
+
+    protected $casts = [
+        'order_items_id' => 'array',
+    ];
+
+    protected $table = 'orders';
+
+    public function getBookDetails() {
+        return $this->hasMany('App\Models\Book', 'id', 'order_items_id');
+    }
 }

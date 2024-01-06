@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    asdasdsa
     @include('../templates/nav')
     @yield('content')
     {{-- <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> --}}

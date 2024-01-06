@@ -4,7 +4,7 @@
         <div class="border p-4 rounded mb-4 shadow">
             <div class="flex flex-row gap-8">
                 <div class="w-96">
-                    <img src="https://down-ph.img.susercontent.com/file/fbfd144031b361a216adfedbef79f325" class="w-full h-64"
+                    <img src="https://m.media-amazon.com/images/I/616BYPbOCyL._AC_UF1000,1000_QL80_.jpg" class="w-full h-64"
                         alt="">
                 </div>
                 <div class="w-full">
@@ -32,9 +32,19 @@
                     <div class="bg-blue-50 p-4 rounded text-xl text-blue-500 font-bold mb-4">
                         ₱ {{ $book->price }}
                     </div>
-                    <div class="mb-4">
-                        <button type="button" data-id="{{$book->id}}" class="px-8 py-3 text-white font-semibold bg-blue-500 add-to-cart">Add to cart</button>
-                    </div>
+
+                    @if (!$book->authAdded)
+                        <div class="mb-4">
+                            <button type="button" data-id="{{ $book->id }}"
+                                class="px-8 py-3 text-white font-semibold bg-blue-500 add-to-cart">Add to cart</button>
+                        </div>
+                    @else
+                        <div class="mb-4">
+                            <button type="button" data-id="{{ $book->id }}"
+                                class="px-8 py-3 text-white font-semibold bg-blue-500 opacity-50" disabled>Added</button>
+                        </div>
+                    @endif
+
                     <hr>
                     <div class="flex flex-row mt-4 text-red-500">
                         <div class="w-full">
@@ -92,6 +102,14 @@
                     219
                 </div>
             </div>
+            <div class="flex flex-row gap-8">
+                <div class="w-40">
+                    Languages
+                </div>
+                <div>
+                    {{ $book->language }}
+                </div>
+            </div>
         </div>
 
         <div class="border p-4 mb-4 shadow">
@@ -100,51 +118,27 @@
             </h3>
             <div class="flex flex-row items-center text-center text-blue-500 mb-4">
                 <div class="w-full border">
-                    <a href="" class="block py-0.5 bg-blue-500 text-white">All (24)</a>
+                    <a href="#!" id="all-star" data-id="{{$book->id}}" class="block py-0.5 hover:bg-blue-500 hover:text-white">All ({{$book->getAllReviews->count()}})</a>
                 </div>
                 <div class="w-full border ">
-                    <a href="" class="block py-0.5 hover:bg-blue-500 hover:text-white">5 Star (0)</a>
+                    <a href="#!" id="five-star" data-id="{{$book->id}}" class="block py-0.5 hover:bg-blue-500 hover:text-white">5 Star ({{$book->getAllReviews->where('rating', '=', 5)->count()}})</a>
                 </div>
                 <div class="w-full border">
-                    <a href="" class="block py-0.5 hover:bg-blue-500 hover:text-white">4 Star (4)</a>
+                    <a href="#!" id="four-star" data-id="{{$book->id}}" class="block py-0.5 hover:bg-blue-500 hover:text-white">4 Star ({{$book->getAllReviews->where('rating', '=', 4)->count()}})</a>
                 </div>
-                <div class="w-full border py-0.5">
-                    <a href="" class="block py-0.5 hover:bg-blue-500 hover:text-white">3 Star (3)</a>
+                <div class="w-full border">
+                    <a href="#!" id="three-star" data-id="{{$book->id}}" class="block py-0.5 hover:bg-blue-500 hover:text-white">3 Star ({{$book->getAllReviews->where('rating', '=', 3)->count()}})</a>
                 </div>
-                <div class="w-full border py-0.5">
-                    <a href="" class="block py-0.5 hover:bg-blue-500 hover:text-white">2 Star (6)</a>
+                <div class="w-full border">
+                    <a href="#!" id="two-star" data-id="{{$book->id}}" class="block py-0.5 hover:bg-blue-500 hover:text-white">2 Star ({{$book->getAllReviews->where('rating', '=', 2)->count()}})</a>
                 </div>
-                <div class="w-full border py-0.5">
-                    <a href="" class="block py-0.5 hover:bg-blue-500 hover:text-white">1 Star (11)</a>
+                <div class="w-full border">
+                    <a href="#!" id="one-star" data-id="{{$book->id}}" class="block py-0.5 hover:bg-blue-500 hover:text-white">1 Star ({{$book->getAllReviews->where('rating', '=', 1)->count()}})</a>
                 </div>
             </div>
-            <div class="border p-4 mb-2">
-                <div class="flex flex-row gap-8">
-                    <div class="w-16 h-16">
-                        <img src="https://down-ph.img.susercontent.com/file/fbfd144031b361a216adfedbef79f325" class="w-full h-full" alt="">
-                    </div>
-                    <div class="w-full">
-                        <div class="flex flex-row justify-between mb-1 items-center">
-                            <h3 class="text-semibold text-blue-500">Jhon Rey Repuela</h3>
-                            <div class="text-gray-400">
-                                2013/03/15
-                            </div>
-                        </div>
-                        <div class="mb-2">
-                            Mollit amet et adipisicing veniam quis adipisicing fugiat. Dolore pariatur magna labore proident fugiat. Duis deserunt in eiusmod sint. Proident Lorem velit excepteur laborum. Mollit esse irure nisi laborum quis. Ex non quis deserunt eiusmod labore ullamco amet sit. Aliquip ipsum sit officia ea nisi proident proident id do.
 
-Aute occaecat anim esse ut consequat labore id reprehenderit excepteur id labore. Sint minim magna proident ut eiusmod eu do fugiat. Do sit in ipsum amet aliquip in voluptate occaecat qui amet sint ea. Sit mollit irure nostrud cillum ipsum et proident. Excepteur id nisi ea dolore reprehenderit eiusmod labore Lorem elit officia anim. Ea pariatur laboris irure mollit duis. Aliqua laboris magna cillum esse.
-                        </div>
-                        <div class="flex flex-row gap-0.5 items-center text-yellow-400">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <div class="ml-0.5">{{ $book->rating }}</div>
-                        </div>
-                    </div>
-                </div>
+            <div id="review-content" data-id="{{$book->id}}">
+
             </div>
         </div>
 

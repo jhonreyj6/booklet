@@ -1,18 +1,5 @@
-Home: {
-    select language
+Search: {
+    empty search
 }
-
-Cart: {
-    retrieve cart items,
-    process total,
-    checkout,
-    select all and select items,
-}
-
-Orders: {
-    retrieve items each tab
-}
-
-invoice
 
 reset password

@@ -25,6 +25,9 @@ class HomeController extends Controller
     public function index()
     {
         $books = Book::paginate(10);
+        foreach($books as $book) {
+            $book->getReviews;
+        }
 
         return view('pages.home', ['books' => $books]);
     }

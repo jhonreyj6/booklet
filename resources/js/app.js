@@ -5,38 +5,9 @@ $.ajaxSetup({
     }
 });
 
-
-$('#english').click(function (e) {
-    if($(this).is(':checked') && !window.location.href.includes('language')) {
-        if(window.location.search) {
-            window.location.href = window.location.href + '&language=english';
-        } else {
-            window.location.href = window.location.href + 'search?language=english';
-        }
-    } else {
-        // window.history.back(-1);
-    }
-});
-
-$('#french').click(function (e) {
-    if($(this).is(':checked') && !window.location.href.includes('language')) {
-        if(window.location.search) {
-            window.location.href = window.location.href + '&language=french';
-        } else {
-            window.location.href = window.location.href + 'search?language=french';
-        }
-    }
-});
-
-$('#spanish').click(function (e) {
-    if($(this).is(':checked') && !window.location.href.includes('language')) {
-        if(window.location.search) {
-            window.location.href = window.location.href + '&language=spanish';
-        } else {
-            window.location.href = window.location.href + 'search?language=spanish';
-        }
-    }
-});
+// $('input[name="language"]').change(function(e) {
+//     $('#form_language').submit();
+// });
 
 $('#user-menu-button').click(function() {
    $('#user-dropdown').toggle();
@@ -66,6 +37,142 @@ $('.add-to-cart').click(function (e) {
             $(e.target).attr('disabled', true);
             $(e.target).addClass('opacity-50');
             $(e.target).removeClass('add-to-cart');
+        }
+    });
+});
+
+$('#all-star').on('click', function (e) {console.log(e);
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "/book/reviews",
+        data: {
+            id: $(e.target).data('id'),
+            rating: 0,
+        },
+        success: function (response) {
+            $('#review-content').html(response);
+        }
+    });
+});
+
+$('#five-star').on('click', function (e) {console.log(e);
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "/book/reviews",
+        data: {
+            id: $(e.target).data('id'),
+            rating: 5,
+        },
+        success: function (response) {
+            $('#review-content').html(response);
+        }
+    });
+});
+
+$('#four-star').on('click', function (e) {console.log(e);
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "/book/reviews",
+        data: {
+            id: $(e.target).data('id'),
+            rating: 4,
+        },
+        success: function (response) {
+            $('#review-content').html(response);
+        }
+    });
+});
+
+$('#three-star').on('click', function (e) {console.log(e);
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "/book/reviews",
+        data: {
+            id: $(e.target).data('id'),
+            rating: 3,
+        },
+        success: function (response) {
+            $('#review-content').html(response);
+        }
+    });
+});
+
+$('#two-star').on('click', function (e) {console.log(e);
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "/book/reviews",
+        data: {
+            id: $(e.target).data('id'),
+            rating: 2,
+        },
+        success: function (response) {
+            $('#review-content').html(response);
+        }
+    });
+});
+
+$('#one-star').on('click', function (e) {console.log(e);
+    e.preventDefault();
+    $.ajax({
+        type: "GET",
+        url: "/book/reviews",
+        data: {
+            id: $(e.target).data('id'),
+            rating: 1,
+        },
+        success: function (response) {
+            $('#review-content').html(response);
+        }
+    });
+});
+
+$(document).ready(function () {
+    if(window.location.pathname == '/book') {
+        $.ajax({
+            type: "GET",
+            url: "/book/reviews",
+            data: {
+                id: $('#review-content').data('id')
+            },
+            dataType: "html",
+            success: function (result) {
+                $('#review-content').html(result);
+            },
+        });
+    }
+});
+
+$('input[name="cart_items_id[]"]').change(function (e) {
+    let subtotal = 0;
+    let voucher = 0;
+    let item_selected_count = 0;
+    $('input[name="cart_items_id[]').each(function() {
+       if($(this).is(':checked')) {
+        subtotal = subtotal += $(this).data('price');
+        item_selected_count = item_selected_count += 1;
+       }
+    });
+    $('#subtotal').text('₱' + subtotal);
+    $('#total').text('₱' + (subtotal - voucher));
+    $('#items_selected_count').text(item_selected_count);
+    console.log(item_selected_count);
+})
+
+$('.remove-cart-item').click(function (e) {
+    e.preventDefault();
+    $.ajax({
+        type: "DELETE",
+        url: "/cart",
+        data: {
+            id: $(e.target).data('id'),
+        },
+        success: function (response) {
+            $(`#div-${$(e.target).data('id')}`).remove();
         }
     });
 });

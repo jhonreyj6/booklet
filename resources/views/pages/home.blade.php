@@ -41,13 +41,13 @@
                                         <i class="fa-solid fa-star"></i>
                                         <div class="ml-0.5">{{ $book->rating }}</div>
                                     </div>
-                                    <div class="text-gray-400 mb-8">
-                                        3946 reviews
-                                    </div>
-                                    <div class="mb-3 self-end text-center">
-                                        <a href="/book?id={{$book->id}}&name?={{$book->name}}" class="py-1.5 rounded bg-blue-700 text-white px-2">Buy now</a>
+                                    <div class="text-gray-400 mb-4">
+                                        {{ $book->getAllReviews->count() }} {{ $book->getAllReviews->count() > 1 ? 'reviews' : 'review' }}
                                     </div>
                                 </div>
+                            </div>
+                            <div class="mb-3 mt-auto text-center">
+                                <a href="/book?id={{$book->id}}&name?={{$book->name}}" class="py-1.5 rounded bg-blue-700 text-white px-4">Add to Cart</a>
                             </div>
                         </div>
                     @endforeach
@@ -59,8 +59,8 @@
                 </div>
             @endif
 
-            @if ($books->nextPageUrl())
-                <div class="text-center">
+            @if ($books->nextPageUrl() || $books->previousPageUrl())
+                <div class="text-center mb-8">
                     <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
                         <a href="{{ $books->previousPageUrl() }}"
                             class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">

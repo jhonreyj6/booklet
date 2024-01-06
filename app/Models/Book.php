@@ -16,7 +16,14 @@ class Book extends Model
         'price',
         'rating',
         'stocks',
+        'genre',
+        'language',
+        'image',
     ];
 
     protected $table = 'books';
+
+    public function getAllReviews() {
+        return $this->hasMany('App\Models\BookReview', 'book_id');
+    }
 }

@@ -27,16 +27,27 @@ class CartController extends Controller
         }
 
         $cart = Cart::whereId($request->input('id'))->first();
-        if($cart) {
-            $cart->quantity = $cart->quantity += 1;
-            $cart->save();
-        } else {
+        if(!$cart) {
             Cart::create([
                 'user_id' => Auth::id(),
                 'book_id' => $request->input('id'),
-                'quantity' => 1,
             ]);
         }
+
+        return response()->json(['message' => 'success'], 200);
+    }
+
+    public function destroy(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'id' => 'exists:carts,id'
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput()->with('danger', 'Something Went Wrong! Please Check the Field...');
+        }
+
+        $cart = Cart::whereId($request->input('id'))->firstOrFail();
+        $cart->delete();
 
         return response()->json(['message' => 'success'], 200);
     }
