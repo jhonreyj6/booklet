@@ -1,5 +1,1 @@
-Search: {
-    empty search
-}
-
 reset password

@@ -56,6 +56,12 @@ class RegisterController extends Controller
             'password' => ['required', 'string', 'min:8'],
             'confirm_password' => ['same:password|required'],
         ]);
+
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
     }
 
     /**
@@ -75,7 +81,19 @@ class RegisterController extends Controller
     }
 
     public function register(Request $request) {
-        $this->validator($request->all());
+        $validator = Validator::make($request->all(), [
+            'first_name' => ['required', 'string', 'max:20'],
+            'last_name' => ['required', 'string', 'max:20'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+            'confirm_password' => ['same:password|required'],
+        ]);
+
+        if($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        // $this->validator($request->all());
         $this->create($request->all());
         return redirect('/login');
     }

@@ -5,10 +5,6 @@ $.ajaxSetup({
     }
 });
 
-// $('input[name="language"]').change(function(e) {
-//     $('#form_language').submit();
-// });
-
 $('#user-menu-button').click(function() {
    $('#user-dropdown').toggle();
 });
@@ -160,7 +156,6 @@ $('input[name="cart_items_id[]"]').change(function (e) {
     $('#subtotal').text('₱' + subtotal);
     $('#total').text('₱' + (subtotal - voucher));
     $('#items_selected_count').text(item_selected_count);
-    console.log(item_selected_count);
 })
 
 $('.remove-cart-item').click(function (e) {
@@ -176,3 +171,4 @@ $('.remove-cart-item').click(function (e) {
         }
     });
 });
+

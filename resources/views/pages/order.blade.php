@@ -14,6 +14,14 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/order/pending"
+                            class="inline-flex items-center px-4 py-3 rounded-lg w-full {{ request()->path() == 'order/pending' ? 'bg-blue-500 text-white' : 'bg-gray-800' }}"
+                            aria-current="page">
+                            <i class="fa-solid fa-clipboard-list text-xl mr-2"></i>
+                            Pending
+                        </a>
+                    </li>
+                    <li>
                         <a href="/order/completed"
                             class="inline-flex items-center px-4 py-3 rounded-lg w-full {{ request()->path() == 'order/completed' ? 'bg-blue-500 text-white' : 'bg-gray-800' }}">
                             <i class="fa-solid fa-square-check mr-2 text-lg"></i>
@@ -82,10 +90,17 @@
                                         </div>
 
                                         <div class="flex flex-row justify-end gap-2 mb-4">
+                                            @if(request()->path() != 'order/pending' && $order->status != 0)
                                             <a href="/order/invoice?id={{ $order->id }}"
                                                 class="px-8 py-1 bg-blue-500 text-white rounded">Invoice</a>
                                             <button type="button"
                                                 class="px-8 py-1 bg-red-500 text-white rounded">Refund</button>
+                                            @else
+                                            <a href="/order/pending/{{ $order->id }}"
+                                                class="px-8 py-1 bg-blue-500 text-white rounded">Pay now</a>
+                                            <button type="button"
+                                                class="px-8 py-1 bg-red-500 text-white rounded">Cancel</button>
+                                            @endif
                                         </div>
                                     </div>
                                 @endforeach

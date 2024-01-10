@@ -14,8 +14,9 @@ class CartController extends Controller
         foreach($carts as $cart) {
             $cart->getBookDetails;
         }
+        $user = auth()->user();
 
-        return view('pages.cart', ['carts' => $carts]);
+        return view('pages.cart', ['carts' => $carts, 'intent' => $user->createSetupIntent()]);
     }
 
     public function store(Request $request) {

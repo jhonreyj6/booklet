@@ -9,7 +9,7 @@
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form class="space-y-6" action="/login" method="POST">
+            <form action="/login" method="POST">
                 <div>
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                     <div class="mt-2">
@@ -18,7 +18,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="mb-2">
                     <div class="flex items-center justify-between">
                         <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                         <div class="text-sm">
@@ -32,6 +32,14 @@
                     </div>
                 </div>
 
+                @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="text-red-500 mb-2">
+                        {{ $error }}
+                    </div>
+                    @endforeach
+                @endif
+
                 <div>
                     @csrf
                     <button type="submit"
@@ -41,8 +49,8 @@
             </form>
 
             <p class="mt-10 text-center text-sm text-gray-500">
-                Not a member?
-                <a href="/register" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Register here.</a>
+                Forgot Password?
+                <a href="/password/reset" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Reset here.</a>
             </p>
         </div>
     </div>

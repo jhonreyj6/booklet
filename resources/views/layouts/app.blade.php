@@ -19,5 +19,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/2012ad018b.js" crossorigin="anonymous"></script>
 @vite('resources/js/app.js')
-
+@yield('script')
 </html>
