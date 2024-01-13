@@ -39,5 +39,5 @@ Route::group(['prefix' => 'order', 'middleware' => 'auth'], function ($router) {
     Route::get('/refund', 'App\Http\Controllers\OrderRefundController@index');
     Route::get('/invoice', 'App\Http\Controllers\OrderInvoiceController@index');
     Route::get('/pending', 'App\Http\Controllers\OrderPendingController@index');
-    Route::get('/pending/{id}', 'App\Http\Controllers\OrderPendingController@show');
+    Route::get('/payment/{id}', 'App\Http\Controllers\PaymentController@create')->name('payment');
 });

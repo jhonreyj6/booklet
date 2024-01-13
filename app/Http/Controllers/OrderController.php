@@ -38,11 +38,13 @@ class OrderController extends Controller
         }
 
         $carts = Cart::whereIn('id', $request->input('cart_items_id'))->get();
+        $books = Book::whereIn('id', $carts->pluck('book_id'))->get();
 
         $order = Order::create([
            'user_id' => Auth::id(),
            'status' => 0,
            'order_items_id' => json_encode($carts->pluck('book_id')),
+           'total' => $books->pluck('prize')->sum(),
         ]);
 
         foreach ($carts as $cart) {
@@ -54,6 +56,6 @@ class OrderController extends Controller
             $cart->delete();
         }
 
-        return redirect('/order');
+        return redirect()->route('payment', ['id' => $order->id]);
     }
 }

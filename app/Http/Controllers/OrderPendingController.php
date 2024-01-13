@@ -6,7 +6,6 @@ use App\Models\Book;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Auth;
-use DB;
 
 class OrderPendingController extends Controller
 {
@@ -18,12 +17,5 @@ class OrderPendingController extends Controller
         }
 
         return view('pages.order', ['orders' => $orders]);
-    }
-
-    public function show($id) {
-        $order = Order::whereId($id)->where('user_id', Auth::id())->firstOrFail();
-        $items = DB::table('books')->whereIn('id', $order->order_items_id)->get();
-
-        return view('pages.pending', ['items' => $items, 'order' => $order]);
     }
 }

@@ -96,7 +96,7 @@
                                             <button type="button"
                                                 class="px-8 py-1 bg-red-500 text-white rounded">Refund</button>
                                             @else
-                                            <a href="/order/pending/{{ $order->id }}"
+                                            <a href="/order/payment/{{ $order->id }}"
                                                 class="px-8 py-1 bg-blue-500 text-white rounded">Pay now</a>
                                             <button type="button"
                                                 class="px-8 py-1 bg-red-500 text-white rounded">Cancel</button>

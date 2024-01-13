@@ -27,15 +27,17 @@
                     @endforeach
                 </div>
             </div>
-            <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+
+            {{-- <form class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
+                @csrf
                 <p class="text-xl font-medium">Payment Details</p>
                 <p class="text-gray-400">Complete your order by providing your payment details.</p>
                 <div class="">
-                    <label for="card-holder" class="mt-4 mb-2 block text-sm font-medium">Card Holder</label>
+                    <label for="card-holder-name"  class="mt-4 mb-2 block text-sm font-medium">Card Holder</label>
                     <div class="relative">
-                        <input type="text" id="card-holder" name="card-holder"
+                        <input type="text" id="card-holder-name" name="card-holder"
                             class="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm uppercase shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
-                            placeholder="Your full name here" />
+                            placeholder="Full name" />
                         <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -44,10 +46,10 @@
                             </svg>
                         </div>
                     </div>
-                    <label for="card-no" class="mt-4 mb-2 block text-sm font-medium">Card Details</label>
+                    <label for="card-element" class="mt-4 mb-2 block text-sm font-medium">Card Details</label>
                     <div class="flex">
                         <div class="relative w-7/12 flex-shrink-0">
-                            <input type="text" id="card-no" name="card-no"
+                            <input type="text" id="card-element" name="card-no"
                                 class="w-full rounded-md border border-gray-200 px-2 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus:border-blue-500 focus:ring-blue-500"
                                 placeholder="xxxx-xxxx-xxxx-xxxx" />
                             <div class="pointer-events-none absolute inset-y-0 left-0 inline-flex items-center px-3">
@@ -105,7 +107,30 @@
                 </div>
                 <button class="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">Place
                     Order</button>
-            </div>
+            </form> --}}
+
+            <form action="/seller/subscribe" method="POST" id="subscribe-form">
+                @csrf
+                <input id="card-holder-name" type="text"><label for="card-holder-name">Card Holder Name</label>
+                <div class="form-row">
+                    <label for="card-element">Credit or debit card</label>
+                    <div id="card-element" class="form-control">
+                    </div>
+                    <!-- Used to display form errors. -->
+                    <div id="card-errors" role="alert"></div>
+                </div>
+                <div class="stripe-errors"></div>
+                @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                    {{ $error }}<br>
+                    @endforeach
+                </div>
+                @endif
+                <div class="form-group text-center">
+                    <button  id="card-button" data-secret="{{ $intent->client_secret }}" class="btn btn-lg btn-success btn-block">SUBMIT</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -146,6 +171,7 @@
         const cardButton = document.getElementById('card-button');
         const clientSecret = cardButton.dataset.secret;
         cardButton.addEventListener('click', async (e) => {
+            e.preventDefault();
             console.log("attempting");
             const {
                 setupIntent,
