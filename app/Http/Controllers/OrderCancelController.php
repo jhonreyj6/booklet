@@ -16,7 +16,7 @@ class OrderCancelController extends Controller
     {
         $orders = Order::where('status', 2)->where('user_id', Auth::id())->paginate(10);
         foreach($orders as $order) {
-            $order->displayItem = Book::whereIn('id', $order->order_items_id)->first();
+            $order->displayItem = Book::whereIn('id', json_decode($order->order_items_id))->first();
         }
 
         return view('pages.order', ['orders' => $orders]);
