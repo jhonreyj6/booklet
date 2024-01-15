@@ -56,6 +56,6 @@ class OrderController extends Controller
             $cart->delete();
         }
 
-        return redirect()->route('payment', ['id' => $order->id]);
+        return redirect()->route('payment.view', ['id' => $order->id]);
     }
 }

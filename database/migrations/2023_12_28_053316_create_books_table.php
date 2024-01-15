@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('stocks');
             $table->integer('rating')->default('0');
             $table->string('image');
+            $table->string('stripe_price_id');
             $table->timestamps();
         });
     }

@@ -1,3 +1,4 @@
+{{-- deleted --}}
 @extends('../layouts/app')
 @section('content')
     <div class="mt-20 max-w-6xl mx-auto border border-blue-200 rounded py-4 px-8 mb-8">

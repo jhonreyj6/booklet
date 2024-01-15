@@ -33,6 +33,11 @@ $('.add-to-cart').click(function (e) {
             $(e.target).attr('disabled', true);
             $(e.target).addClass('opacity-50');
             $(e.target).removeClass('add-to-cart');
+        },
+        error: function (err) {
+            if(err.status == 401) {
+                window.location.href = '/login'
+            }
         }
     });
 });

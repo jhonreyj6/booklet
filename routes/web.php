@@ -40,7 +40,7 @@ Route::group(['prefix' => 'order', 'middleware' => 'auth'], function ($router) {
     Route::get('/invoice', 'App\Http\Controllers\OrderInvoiceController@index');
     Route::get('/pending', 'App\Http\Controllers\OrderPendingController@index');
     Route::get('/payment/success', 'App\Http\Controllers\PaymentController@successPayment')->name('payment.success');
-    Route::get('/payment/success', 'App\Http\Controllers\PaymentController@cancelPayment')->name('payment.cancel');
+    Route::get('/payment/cancel', 'App\Http\Controllers\PaymentController@cancelPayment')->name('payment.cancel');
     Route::get('/payment/{id}', 'App\Http\Controllers\PaymentController@create')->name('payment.view');
     Route::post('/payment/{id}', 'App\Http\Controllers\PaymentController@singleCharge')->name('single.charge');
 });

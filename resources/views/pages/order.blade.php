@@ -90,8 +90,11 @@
                                             <button type="button"
                                                 class="px-8 py-1 bg-red-500 text-white rounded">Refund</button>
                                             @else
-                                            <a href="/order/payment/{{ $order->id }}"
-                                                class="px-8 py-1 bg-blue-500 text-white rounded">Pay now</a>
+                                            <form action="{{ route('single.charge', ['id' => $order->id]) }}" method="POST">
+                                                @csrf
+                                                <button type="submit" href="/order/payment/{{ $order->id }}"
+                                                    class="px-8 py-1 bg-blue-500 text-white rounded">Pay now</button>
+                                            </form>
                                             <button type="button"
                                                 class="px-8 py-1 bg-red-500 text-white rounded">Cancel</button>
                                             @endif

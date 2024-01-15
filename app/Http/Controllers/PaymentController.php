@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Book;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\Order;
@@ -19,19 +20,24 @@ class PaymentController extends Controller
 
     public function singleCharge($id, Request $request)
     {
-        $stripePriceId = 'price_deluxe_album';
 
-        return $request->user()->checkout([$stripePriceId => 1], [
-            'success_url' => route('checkout-success'),
-            'cancel_url' => route('checkout-cancel'),
+        $order = Order::whereId($id)->where('user_id', Auth::id())->firstOrFail();
+        $books = Book::whereIn('id', json_decode($order->order_items_id))->get();
+        foreach ($books as $book) {
+            $book->quantity = 1;
+        }
+
+        return $request->user()->checkout([implode(",", $books->pluck('stripe_price_id', 'quantity')->toArray())], [
+            'success_url' => route('payment.success'),
+            'cancel_url' => route('payment.cancel'),
         ]);
     }
 
-    public function successPayment(Request $request) {
+    public function successPayment() {
         return view('pages.payment_success');
     }
 
-    public function cancelPayment(Request $request) {
+    public function cancelPayment() {
         return view('pages.payment_cancel');
     }
 }
