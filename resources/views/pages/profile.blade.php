@@ -10,7 +10,7 @@
                                 <img src="/storage/user/{{ Auth::id() }}/image/profile/{{ Auth::user()->profile_img }}"
                                     id="image-src" class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
                             @else
-                                <img src="https://randomuser.me/api/portraits/men/94.jpg"
+                                <img src="https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png"
                                     class="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0">
                             @endif
                             <h1 class="text-lg font-bold">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h1>

@@ -29,8 +29,13 @@
                         class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                         id="user-menu-button" aria-expanded="false">
                         <span class="sr-only">Open user menu</span>
-                        <img class="w-8 h-8 rounded-full" src="https://www.w3schools.com/howto/img_avatar.png"
+                        @if(Auth::user()->profile_img)
+                            <img class="w-8 h-8 rounded-full" src="/storage/user/{{ Auth::id() }}/image/profile/{{ Auth::user()->profile_img }}"
+                        alt="user photo">
+                        @else
+                            <img class="w-8 h-8 rounded-full" src="https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png"
                             alt="user photo">
+                        @endif
                     </button>
                     <!-- Dropdown menu -->
                     <div class="z-50 w-44 hidden absolute right-0 text-base list-none bg-white divide-y divide-gray-100 shadow dropdown-content"

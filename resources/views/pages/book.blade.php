@@ -15,15 +15,17 @@
                     </div>
                     <div class="flex flex-row gap-4 mb-2">
                         <div class="flex flex-row gap-0.5 items-center text-yellow-400">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
+                            @for ($i = 0; $i < $book->rating; $i++)
+                                <i class="fa-solid fa-star"></i>
+                            @endfor
+                            @for ($i = $book->rating; $i < 5; $i++)
+                                <i class="fa-regular fa-star"></i>
+                            @endfor
                             <div class="ml-0.5">{{ $book->rating }}</div>
                         </div>
                         <div class="font-semibold">
-                            96 reviews
+                            {{ $book->getAllReviews->count() }}
+                            {{ $book->getAllReviews->count() > 1 ? 'reviews' : 'review' }}
                         </div>
                         <div class="font-semibold">
 
@@ -118,26 +120,38 @@
             </h3>
             <div class="flex flex-row items-center text-center text-blue-500 mb-4">
                 <div class="w-full border">
-                    <a href="#!" id="all-star" data-id="{{$book->id}}" class="block py-0.5 bg-blue-500 text-white active hover:bg-blue-500 hover:text-white">All ({{$book->getAllReviews->count()}})</a>
+                    <a href="#!" id="all-star" data-id="{{ $book->id }}"
+                        class="block py-0.5 bg-blue-500 text-white active hover:bg-blue-500 hover:text-white">All
+                        ({{ $book->getAllReviews->count() }})</a>
                 </div>
                 <div class="w-full border ">
-                    <a href="#!" id="five-star" data-id="{{$book->id}}" data-rating="5" class="block review-star py-0.5 hover:bg-blue-500 hover:text-white">5 Star ({{$book->getAllReviews->where('rating', '=', 5)->count()}})</a>
+                    <a href="#!" id="five-star" data-id="{{ $book->id }}" data-rating="5"
+                        class="block review-star py-0.5 hover:bg-blue-500 hover:text-white">5 Star
+                        ({{ $book->getAllReviews->where('rating', '=', 5)->count() }})</a>
                 </div>
                 <div class="w-full border">
-                    <a href="#!" id="four-star" data-id="{{$book->id}}" data-rating="4" class="block review-star py-0.5 hover:bg-blue-500 hover:text-white">4 Star ({{$book->getAllReviews->where('rating', '=', 4)->count()}})</a>
+                    <a href="#!" id="four-star" data-id="{{ $book->id }}" data-rating="4"
+                        class="block review-star py-0.5 hover:bg-blue-500 hover:text-white">4 Star
+                        ({{ $book->getAllReviews->where('rating', '=', 4)->count() }})</a>
                 </div>
                 <div class="w-full border">
-                    <a href="#!" id="three-star" data-id="{{$book->id}}" data-rating="3" class="block review-star py-0.5 hover:bg-blue-500 hover:text-white">3 Star ({{$book->getAllReviews->where('rating', '=', 3)->count()}})</a>
+                    <a href="#!" id="three-star" data-id="{{ $book->id }}" data-rating="3"
+                        class="block review-star py-0.5 hover:bg-blue-500 hover:text-white">3 Star
+                        ({{ $book->getAllReviews->where('rating', '=', 3)->count() }})</a>
                 </div>
                 <div class="w-full border">
-                    <a href="#!" id="two-star" data-id="{{$book->id}}" data-rating="2" class="block review-star py-0.5 hover:bg-blue-500 hover:text-white">2 Star ({{$book->getAllReviews->where('rating', '=', 2)->count()}})</a>
+                    <a href="#!" id="two-star" data-id="{{ $book->id }}" data-rating="2"
+                        class="block review-star py-0.5 hover:bg-blue-500 hover:text-white">2 Star
+                        ({{ $book->getAllReviews->where('rating', '=', 2)->count() }})</a>
                 </div>
                 <div class="w-full border">
-                    <a href="#!" id="one-star" data-id="{{$book->id}}" data-rating="1" class="block review-star py-0.5 hover:bg-blue-500 hover:text-white">1 Star ({{$book->getAllReviews->where('rating', '=', 1)->count()}})</a>
+                    <a href="#!" id="one-star" data-id="{{ $book->id }}" data-rating="1"
+                        class="block review-star py-0.5 hover:bg-blue-500 hover:text-white">1 Star
+                        ({{ $book->getAllReviews->where('rating', '=', 1)->count() }})</a>
                 </div>
             </div>
 
-            <div id="review-content" data-id="{{$book->id}}">
+            <div id="review-content" data-id="{{ $book->id }}">
 
             </div>
         </div>

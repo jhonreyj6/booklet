@@ -7,9 +7,8 @@
             <form method="GET" action="/search" autocomplete="on" class="mb-4">
                 <div class="relative">
                     <input type="text" name="query"
-                    class="py-3 px-4 pe-11 block w-full border border-blue-500 bg-blue-50 shadow-sm rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
-                    value="{{ request()->query('query') }}"
-                    placeholder="Search Book">
+                        class="py-3 px-4 pe-11 block w-full border border-blue-500 bg-blue-50 shadow-sm rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
+                        value="{{ request()->query('query') }}" placeholder="Search Book">
 
                     <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-4">
                         <i class="fa-solid fa-magnifying-glass text-blue-700"></i>
@@ -34,20 +33,23 @@
                                         <h6 class="text-sm text-gray-400">{{ $book->stocks }} stocks left</h6>
                                     </div>
                                     <div class="flex flex-row gap-0.5 items-center text-sm text-yellow-400">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
+                                        @for ($i = 0; $i < $book->rating; $i++)
+                                            <i class="fa-solid fa-star"></i>
+                                        @endfor
+                                        @for ($i = $book->rating; $i < 5; $i++)
+                                            <i class="fa-regular fa-star"></i>
+                                        @endfor
                                         <div class="ml-0.5">{{ $book->rating }}</div>
                                     </div>
                                     <div class="text-gray-400 mb-4">
-                                        {{ $book->getAllReviews->count() }} {{ $book->getAllReviews->count() > 1 ? 'reviews' : 'review' }}
+                                        {{ $book->getAllReviews->count() }}
+                                        {{ $book->getAllReviews->count() > 1 ? 'reviews' : 'review' }}
                                     </div>
                                 </div>
                             </div>
                             <div class="mb-3 mt-auto text-center">
-                                <a href="/book?id={{$book->id}}&name?={{$book->name}}" class="py-1.5 rounded bg-blue-700 text-white px-4">Add to Cart</a>
+                                <a href="/book?id={{ $book->id }}&name?={{ $book->name }}"
+                                    class="py-1.5 rounded bg-blue-700 text-white px-4">Add to Cart</a>
                             </div>
                         </div>
                     @endforeach
