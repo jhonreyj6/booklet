@@ -20,14 +20,14 @@ class PaymentController extends Controller
 
     public function singleCharge($id, Request $request)
     {
-
         $order = Order::whereId($id)->where('user_id', Auth::id())->firstOrFail();
         $books = Book::whereIn('id', json_decode($order->order_items_id))->get();
+        $data = [];
         foreach ($books as $book) {
-            $book->quantity = 1;
+            $data = array_merge($data, array($book->stripe_price_id => 1));
         }
 
-        return $request->user()->checkout([implode(",", $books->pluck('stripe_price_id', 'quantity')->toArray())], [
+        return $request->user()->checkout($data, [
             'success_url' => route('payment.success'),
             'cancel_url' => route('payment.cancel'),
         ]);

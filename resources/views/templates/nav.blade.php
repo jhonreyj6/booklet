@@ -24,21 +24,20 @@
 
         @auth
             <div class="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-4">
-                <div class="relative">
+                <div class="relative dropdown">
                     <button type="button"
                         class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
-                        id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
-                        data-dropdown-placement="bottom">
+                        id="user-menu-button" aria-expanded="false">
                         <span class="sr-only">Open user menu</span>
                         <img class="w-8 h-8 rounded-full" src="https://www.w3schools.com/howto/img_avatar.png"
                             alt="user photo">
                     </button>
                     <!-- Dropdown menu -->
-                    <div class="z-50 w-44 hidden absolute right-0 my-4 text-base list-none bg-white divide-y divide-gray-100 shadow"
+                    <div class="z-50 w-44 hidden absolute right-0 text-base list-none bg-white divide-y divide-gray-100 shadow dropdown-content"
                         id="user-dropdown">
-                        <div class="px-4 py-3">
+                        <div class="py-3">
                             <span class="block text-sm text-gray-900 dark:text-white"></span>
-                            <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                            <a href="/user/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Profile</a>
                         </div>
                         <ul class="py-2 flex flex-col justify-items-start" aria-labelledby="user-menu-button">
                             <li>

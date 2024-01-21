@@ -25,6 +25,12 @@ Route::group(['prefix' => 'book', 'middleware' => 'auth'], function ($router) {
     Route::get('/reviews', 'App\Http\Controllers\ReviewController@index')->withoutMiddleware('auth');
 });
 
+Route::group(['prefix' => 'user', 'middleware' => 'auth'], function ($router) {
+    Route::get('/profile', 'App\Http\Controllers\ProfileController@index');
+    Route::patch('/profile', 'App\Http\Controllers\ProfileController@update');
+    Route::post('/profile/image', 'App\Http\Controllers\ProfileController@store');
+});
+
 Route::group(['prefix' => 'cart', 'middleware' => 'auth'], function ($router) {
     Route::get('/', 'App\Http\Controllers\CartController@index');
     Route::post('/', 'App\Http\Controllers\CartController@store');
@@ -39,6 +45,10 @@ Route::group(['prefix' => 'order', 'middleware' => 'auth'], function ($router) {
     Route::get('/refund', 'App\Http\Controllers\OrderRefundController@index');
     Route::get('/invoice', 'App\Http\Controllers\OrderInvoiceController@index');
     Route::get('/pending', 'App\Http\Controllers\OrderPendingController@index');
+
+    Route::get('/reviews/{id}', 'App\Http\Controllers\ReviewController@show');
+    Route::post('/reviews/{id}', 'App\Http\Controllers\ReviewController@store')->name('create.review');
+
     Route::get('/payment/success', 'App\Http\Controllers\PaymentController@successPayment')->name('payment.success');
     Route::get('/payment/cancel', 'App\Http\Controllers\PaymentController@cancelPayment')->name('payment.cancel');
     Route::get('/payment/{id}', 'App\Http\Controllers\PaymentController@create')->name('payment.view');

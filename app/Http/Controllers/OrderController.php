@@ -44,8 +44,13 @@ class OrderController extends Controller
            'user_id' => Auth::id(),
            'status' => 0,
            'order_items_id' => json_encode($carts->pluck('book_id')),
-           'total' => $books->pluck('prize')->sum(),
+           'total' => $books->pluck('price')->sum(),
         ]);
+
+        $data = [];
+        foreach ($books as $book) {
+            $data = array_merge($data, array($book->stripe_price_id => 1));
+        }
 
         foreach ($carts as $cart) {
             OrderItems::create([
@@ -56,6 +61,9 @@ class OrderController extends Controller
             $cart->delete();
         }
 
-        return redirect()->route('payment.view', ['id' => $order->id]);
+        return $request->user()->checkout($data, [
+            'success_url' => route('payment.success'),
+            'cancel_url' => route('payment.cancel'),
+        ]);
     }
 }

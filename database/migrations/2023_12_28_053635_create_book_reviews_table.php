@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('book_reviews', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
             $table->integer('book_id');
             $table->integer('rating');
             $table->string('message');

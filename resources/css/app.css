@@ -13,3 +13,11 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+
+textarea {
+    resize: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}

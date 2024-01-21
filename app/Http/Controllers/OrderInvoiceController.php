@@ -6,6 +6,7 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use Auth;
 use DB;
+use App\Models\Book;
 
 class OrderInvoiceController extends Controller
 {
@@ -14,15 +15,8 @@ class OrderInvoiceController extends Controller
      */
     public function index(Request $request)
     {
-        // $order = Order::whereId($request->input('id'))->where('user_id', Auth::id())->firstOrFail();
-        // foreach ($order->order_items_id as $key => $value) {
-        //     $order->getBookDetails;
-        // }
-        // return $order;
-
-        $order = DB::table('orders')->where('id', $request->input('id'))->where('user_id', Auth::id())->first();
-
-        $order->getBookDetails = DB::table('books')->whereIn('id', json_decode($order->order_items_id))->get();
+        $order = Order::whereId($request->input('id'))->where('user_id', Auth::id())->firstOrFail();
+        $order->getBookDetails = Book::whereIn('id', json_decode($order->order_items_id))->get();
 
         return view('pages.invoice', ['order' => $order]);
     }

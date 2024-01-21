@@ -23,6 +23,6 @@ class Order extends Model
     protected $table = 'orders';
 
     public function getBookDetails() {
-        return $this->hasMany('App\Models\Book', 'id', 'order_items_id');
+        return $this->hasMany('App\Models\Book', 'id', json_decode('order_items_id'));
     }
 }

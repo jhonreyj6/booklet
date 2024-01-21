@@ -30,15 +30,15 @@
                     </li>
                     <li>
                         <a href="/order/cancelled"
-                        class="inline-flex items-center px-4 py-3 rounded-lg w-full {{ request()->path() == 'order/cancelled' ? 'bg-blue-500 text-white' : 'bg-gray-800' }}">
+                            class="inline-flex items-center px-4 py-3 rounded-lg w-full {{ request()->path() == 'order/cancelled' ? 'bg-blue-500 text-white' : 'bg-gray-800' }}">
                             <i class="fa-regular fa-circle-xmark mr-2 text-lg"></i>
                             Cancelled
                         </a>
                     </li>
                     <li>
                         <a href="/order/refund"
-                        class="inline-flex items-center px-4 py-3 rounded-lg w-full {{ request()->path() == 'order/refund' ? 'bg-blue-500 text-white' : 'bg-gray-800' }}">
-                        <i class="fa-solid fa-hand-holding-dollar mr-2 text-lg"></i>
+                            class="inline-flex items-center px-4 py-3 rounded-lg w-full {{ request()->path() == 'order/refund' ? 'bg-blue-500 text-white' : 'bg-gray-800' }}">
+                            <i class="fa-solid fa-hand-holding-dollar mr-2 text-lg"></i>
                             Refund
                         </a>
                     </li>
@@ -84,19 +84,23 @@
                                         </div>
 
                                         <div class="flex flex-row justify-end gap-2 mb-4">
-                                            @if(request()->path() != 'order/pending' && $order->status != 0)
-                                            <a href="/order/invoice?id={{ $order->id }}"
-                                                class="px-8 py-1 bg-blue-500 text-white rounded">Invoice</a>
-                                            <button type="button"
-                                                class="px-8 py-1 bg-red-500 text-white rounded">Refund</button>
+                                            @if (request()->path() != 'order/pending' && $order->status != 0)
+                                                <a href="/order/reviews/{{ $order->id }}"
+                                                    class="px-4 py-1 bg-green-500 text-white rounded">Write a
+                                                    review</a>
+                                                <a href="/order/invoice?id={{ $order->id }}"
+                                                    class="px-4 py-1 bg-blue-500 text-white rounded">Invoice</a>
+                                                <button type="button"
+                                                    class="px-4 py-1 bg-red-500 text-white rounded">Refund</button>
                                             @else
-                                            <form action="{{ route('single.charge', ['id' => $order->id]) }}" method="POST">
-                                                @csrf
-                                                <button type="submit" href="/order/payment/{{ $order->id }}"
-                                                    class="px-8 py-1 bg-blue-500 text-white rounded">Pay now</button>
-                                            </form>
-                                            <button type="button"
-                                                class="px-8 py-1 bg-red-500 text-white rounded">Cancel</button>
+                                                <form action="{{ route('single.charge', ['id' => $order->id]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <button type="submit" href="/order/payment/{{ $order->id }}"
+                                                        class="px-4 py-1 bg-blue-500 text-white rounded">Pay now</button>
+                                                </form>
+                                                <button type="button"
+                                                    class="px-4 py-1 bg-red-500 text-white rounded">Cancel</button>
                                             @endif
                                         </div>
                                     </div>
@@ -115,4 +119,5 @@
             </div>
         </div>
     </div>
-@stop
+
+@endsection
