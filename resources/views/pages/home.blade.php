@@ -75,7 +75,7 @@
                         </a>
                         @for ($i = 1; $i <= $books->lastPage(); $i++)
                             <a href="{{ '?page=' . $i }}" @class([
-                                'bg-blue-600' => $i == $books->currentPage(),
+                                'bg-blue-600 text-white' => $i == $books->currentPage(),
                                 'relative z-10 inline-flex items-center text-gray-400 border-gray-300 border px-4 py-2 text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600',
                             ])>{{ $i }}</a>
                         @endfor

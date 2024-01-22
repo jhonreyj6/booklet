@@ -16,10 +16,10 @@ class ReviewController extends Controller
         if($request->input('rating')) {
             $reviews = BookReview::where('book_id', $book->id)
                 ->where('rating', '=',  $request->input('rating'))
-                ->paginate(6);
+                ->paginate(1);
         } else {
             $reviews = BookReview::where('book_id', $book->id)
-                ->paginate(6);
+                ->paginate(1);
         }
 
         return view('templates.review', ['reviews' => $reviews, 'book' => $book])->render();

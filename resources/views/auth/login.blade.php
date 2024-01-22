@@ -3,18 +3,16 @@
     <div class="mt-32">
         <div class="max-w-md mx-auto">
             <div class="mb-8">
-                <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                    alt="Your Company">
                 <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account
                 </h2>
             </div>
             <div class="mb-4">
                 <div class="grid grid-cols-2 gap-4">
                     <div class="col-span-1 text-lg">
-                        <a href="#!" class="block text-center py-2 rounded font-semibold bg-blue-700 text-white"><i class="fa-brands fa-square-facebook"></i> Facebook</a>
+                        <a href="/auth/redirect/facebook" class="block text-center py-2 rounded font-semibold bg-blue-700 text-white"><i class="fa-brands fa-square-facebook"></i> Facebook</a>
                     </div>
                     <div class="col-span-1 text-lg">
-                        <a href="#!" class="text-center block py-2 rounded font-semibold bg-sky-500 text-white"><i class="fa-brands fa-square-twitter"></i> Twitter</a>
+                        <a href="/auth/redirect/google" class="text-center block py-2 rounded font-semibold bg-red-500 text-white"><i class="fa-brands fa-google"></i> Google</a>
                     </div>
                 </div>
             </div>
@@ -57,7 +55,7 @@
                     <div>
                         @csrf
                         <button type="submit"
-                            class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign
+                            class="flex w-full mt-8 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign
                             in</button>
                     </div>
                 </form>

@@ -20,6 +20,11 @@ Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout');
 Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register');
 Route::get('/search', 'App\Http\Controllers\SearchController@index')->name('search');
 
+Route::group(['prefix' => 'auth'], function ($router) {
+    Route::get('/redirect/{provider}', 'App\Http\Controllers\SocialiteController@redirect');
+    Route::get('/callback/{provider}', 'App\Http\Controllers\SocialiteController@callback');
+});
+
 Route::group(['prefix' => 'book', 'middleware' => 'auth'], function ($router) {
     Route::get('/', 'App\Http\Controllers\BookController@index')->withoutMiddleware('auth');
     Route::get('/reviews', 'App\Http\Controllers\ReviewController@index')->withoutMiddleware('auth');
