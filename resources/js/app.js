@@ -104,6 +104,7 @@ $(document).ready(function () {
             },
         });
     }
+
 });
 
 $(window).on('click', function (e) {
@@ -226,3 +227,5 @@ $('#profile-input').change(function(e) {
         }
     });
 });
+
+

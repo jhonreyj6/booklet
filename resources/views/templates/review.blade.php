@@ -18,7 +18,7 @@
                         <h3 class="text-semibold text-blue-500">{{ $review->getUserDetails->first_name }}
                             {{ $review->getUserDetails->last_name }}</h3>
                         <div class="text-gray-400">
-                            2013/03/15
+                            {{ $review->created_at->format('Y-m-d') }}
                         </div>
                     </div>
                     <div class="mb-2">
@@ -57,15 +57,35 @@
                 'relative z-10 inline-flex items-center text-gray-400 border-gray-300 border px-4 py-2 text-sm font-semibold focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600',
             ])>{{ $i }}</a>
         @endfor
-        <a href="{{ $reviews->nextPageUrl() }}"
-            class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+        <button type="button" data-next-page="{{ $reviews->nextPageUrl() }}"
+            class="review-next-page relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
             <span class="sr-only">Next</span>
             <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd"
                     d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
                     clip-rule="evenodd" />
             </svg>
-        </a>
+        </button>
     </nav>
 </div>
 @endif
+
+@push('script')
+<script type="text/javascript">
+    $('.review-next-page').on('click', function(e) {
+        console.log('click');
+
+        // $.ajax({
+        //     type: "GET",
+        //     url: "/book/reviews",
+        //     success: function (response) {
+        //         $("#review-content").html(response);
+        //     },
+        //     error: function(data) {
+        //         console.log(data);
+        //     }
+        // });
+    });
+</script>
+@endpush
+
