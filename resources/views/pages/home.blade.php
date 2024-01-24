@@ -2,7 +2,7 @@
 @section('content')
     <div class="flex flex-row gap-8 px-4">
         @include('templates.aside')
-        <div class="mt-20 w-full">
+        <div class="mt-24 w-full">
             {{-- Search --}}
             <form method="GET" action="/search" autocomplete="on" class="mb-4">
                 <div class="relative">
@@ -18,7 +18,7 @@
 
             {{-- book item loop --}}
             @if ($books->count())
-                <div class="grid md:grid-cols-5 sm:grid-cols-1 gap-4 mb-8">
+                <div class="grid md:grid-cols-4 lg:grid-cols-5 sm:grid-cols-1 gap-4 mb-8">
                     @foreach ($books as $book)
                         <div class="border rounded-sm flex flex-col">
                             <img src="https://m.media-amazon.com/images/I/616BYPbOCyL._AC_UF1000,1000_QL80_.jpg"

@@ -118,7 +118,7 @@
             <h3 class="text-xl font-semibold mb-4">
                 Reviews
             </h3>
-            <div class="flex flex-row items-center text-center text-blue-500 mb-4">
+            <div class="flex flex-col md:flex-row items-center text-center text-blue-500 mb-4">
                 <div class="w-full border">
                     <a href="#!" id="all-star" data-id="{{ $book->id }}"
                         class="block py-0.5 bg-blue-500 text-white active hover:bg-blue-500 hover:text-white">All

@@ -45,21 +45,9 @@
                 </ul>
 
                 <div class="w-full">
-                    <form method="GET" action="{{ url()->current() }}" autocomplete="on" class="mb-4">
-                        <div class="relative">
-                            <input type="text" name="query"
-                                class="py-3 px-4 pe-11 block w-full border border-blue-500 bg-blue-50 shadow-sm rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
-                                value="{{ request()->query('query') }}" placeholder="Search order...">
-
-                            <div class="absolute inset-y-0 end-0 flex items-center pointer-events-none pe-4">
-                                <i class="fa-solid fa-magnifying-glass text-blue-700"></i>
-                            </div>
-                        </div>
-                    </form>
-
                     <div class="p-4 min-h-96 bg-gray-50 text-medium text-gray-500 dark:text-gray-400 rounded-lg w-full">
                         @if ($orders->count())
-                            <div class="border px-4 py-2 flex flex-col gap-2">
+                            <div class="p-2 flex flex-col gap-2">
                                 @foreach ($orders as $order)
                                     <div class="border px-4 pt-2 pb-2 mb-4 rounded bg-blue-50 border-gray-400 shadow">
                                         <div

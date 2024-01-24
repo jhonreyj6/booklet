@@ -2,8 +2,8 @@
 @section('content')
     <form class="container mx-auto mt-24" action="/order" method="POST">
         @csrf
-        <div class="flex shadow-md border my-10">
-            <div class="w-3/4 bg-white px-10 py-10">
+        <div class="flex flex-col md:flex-row shadow-md border my-10">
+            <div class="w-full md:w-3/4 bg-white px-10 py-10">
                 <div class="flex justify-between border-b pb-8">
                     <h1 class="font-semibold text-2xl">Shopping Cart</h1>
                     <h2 class="font-semibold text-2xl">{{ $carts->count() }} Items</h2>
@@ -49,7 +49,7 @@
 
             </div>
 
-            <div id="summary" class="w-1/4 px-8 py-10">
+            <div id="summary" class="w-full md:w-1/4 px-8 py-10">
                 <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
                 <div class="flex justify-between mt-10 mb-5">
                     <span class="font-semibold text-sm uppercase">

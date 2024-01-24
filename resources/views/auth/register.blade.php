@@ -1,7 +1,7 @@
 @extends('../layouts/app')
 @section('content')
-    <section class="bg-gray-50 mt-8">
-        <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0 max-w-2xl">
+    <section class="bg-gray-50 mt-32">
+        <div class="flex flex-col items-center justify-center px-6 mx-auto max-w-2xl">
             <div
                 class="w-full bg-white rounded-lg shadow dark:border md:mt-0 xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
