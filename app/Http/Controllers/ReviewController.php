@@ -22,7 +22,7 @@ class ReviewController extends Controller
                 ->paginate(1);
         }
 
-        return view('templates.review', ['reviews' => $reviews, 'book' => $book])->render();
+        return view('templates.review', ['reviews' => $reviews])->render();
     }
 
     public function store($id, Request $request) {
@@ -36,7 +36,6 @@ class ReviewController extends Controller
         }
 
         $item = OrderItems::whereId($id)->where('user_id', Auth::user()->id)->firstOrFail();
-
         $review = BookReview::where('book_id', $item->book_id)->where('user_id', Auth::user()->id)->first();
 
         if($review) {

@@ -5,10 +5,6 @@ $.ajaxSetup({
     },
 });
 
-// $("#user-menu-button").click(function () {
-//     $("#user-dropdown").toggleClass('hidden');
-// });
-
 $("#logout").click(function (e) {
     e.preventDefault();
     $.ajax({
@@ -44,39 +40,39 @@ $(".add-to-cart").click(function (e) {
 
 $(".review-star").on("click", function (e) {
     e.preventDefault();
-    $('.review-star').each(function (el) {
-       if($(this).hasClass('active')) {
-           $(this).removeClass('active bg-blue-500 text-white');
-       }
+    $(".review-star").each(function (el) {
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active bg-blue-500 text-white");
+        }
     });
 
-    $('#all-star').removeClass('active bg-blue-500 text-white');
-    $(e.target).addClass('active bg-blue-500 text-white');
+    $("#all-star").removeClass("active bg-blue-500 text-white");
+    $(e.target).addClass("active bg-blue-500 text-white");
 
     $.ajax({
         type: "GET",
         url: "/book/reviews",
         data: {
             id: $(e.target).data("id"),
-            rating: $(e.target).data('rating'),
+            rating: $(e.target).data("rating"),
         },
         success: function (response) {
             $("#review-content").html(response);
         },
-        error: function(data) {
+        error: function (data) {
             console.log(data);
-        }
+        },
     });
 });
 
 $("#all-star").on("click", function (e) {
     e.preventDefault();
-    $(e.target).addClass('active bg-blue-500 text-white');
-    $('.review-star').each(function (el) {
-        if($(this).hasClass('active')) {
-            $(this).removeClass('active bg-blue-500 text-white');
+    $(e.target).addClass("active bg-blue-500 text-white");
+    $(".review-star").each(function (el) {
+        if ($(this).hasClass("active")) {
+            $(this).removeClass("active bg-blue-500 text-white");
         }
-     });
+    });
 
     $.ajax({
         type: "GET",
@@ -87,6 +83,48 @@ $("#all-star").on("click", function (e) {
         success: function (response) {
             $("#review-content").html(response);
         },
+    });
+});
+
+$(document).ready ( function () {
+    $(document).on ("click", ".review-next-page", function () {
+        $.ajax({
+            type: "GET",
+            url: $(this).data('next-page'),
+            data: {
+                id: $("#review-content").data("id"),
+            },
+            dataType: "html",
+            success: function (result) {
+                $("#review-content").html(result);
+            },
+        });
+    });
+    $(document).on ("click", ".review-prev-page", function () {
+        $.ajax({
+            type: "GET",
+            url: $(this).data('prev-page'),
+            data: {
+                id: $("#review-content").data("id"),
+            },
+            dataType: "html",
+            success: function (result) {
+                $("#review-content").html(result);
+            },
+        });
+    });
+    $(document).on ("click", ".review-current-page", function () {
+        $.ajax({
+            type: "GET",
+            url: $(this).data('current-page'),
+            data: {
+                id: $("#review-content").data("id"),
+            },
+            dataType: "html",
+            success: function (result) {
+                $("#review-content").html(result);
+            },
+        });
     });
 });
 
@@ -104,10 +142,9 @@ $(document).ready(function () {
             },
         });
     }
-
 });
 
-$(window).on('click', function (e) {
+$(window).on("click", function (e) {
     //here
 });
 
@@ -184,8 +221,6 @@ $(".form-review-btn").click(function (e) {
 
 $(".edit-review").click(function (e) {
     $(`#form-id-${$(this).data("id")}`).show();
-    // console.log($(`#textarea-${$(this).data('id')}`).val());
-    console.log($(`review-message-${$(this).data("id")}`));
     $(`#textarea-${$(this).data("id")}`).val(
         $(`#review-message-${$(this).data("id")}`)
             .text()
@@ -201,17 +236,15 @@ $(".cancel-edit-review").click(function (e) {
 });
 
 $("textarea").keydown(function (e) {
-    // Enter was pressed without shift key
     if (e.keyCode == 13 && !e.shiftKey) {
-        // prevent default behavior
         e.preventDefault();
     }
 });
 
-$('#profile-input').change(function(e) {
+$("#profile-input").change(function (e) {
     let temp_img = URL.createObjectURL(e.target.files[0]);
     const formData = new FormData();
-    formData.append('image', $(this).prop('files')[0]);
+    formData.append("image", $(this).prop("files")[0]);
 
     $.ajax({
         type: "POST",
@@ -220,12 +253,10 @@ $('#profile-input').change(function(e) {
         processData: false,
         contentType: false,
         success: function (response) {
-            $('#image-src').attr('src', temp_img);
+            $("#image-src").attr("src", temp_img);
         },
         error: function (data) {
             console.log(data);
-        }
+        },
     });
 });
-
-
