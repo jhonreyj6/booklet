@@ -57,7 +57,7 @@
 
                                         <div class="flex flex-row gap-4 mb-4">
                                             <div class="w-28 h-20 border">
-                                                <img src="https://down-ph.img.susercontent.com/file/ph-11134201-7r98o-lkkwmlu6o5z556_tn"
+                                                <img src="{{ $order->displayItem ? '/assets/img/' . $order->displayItem->image : '/assets/img/empty_book.jpg' }}"
                                                     alt="" class="w-full h-full">
                                             </div>
                                             <div class="w-full">

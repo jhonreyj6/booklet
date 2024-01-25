@@ -199,6 +199,7 @@ $(".form-review-btn").click(function (e) {
     e.preventDefault();
     let id = $(this).data("form-id");
     let form = $(`#form-id-${id}`);
+    $(`#star-content-${id}`).children().remove();
 
     $.ajax({
         type: "POST",
@@ -207,6 +208,15 @@ $(".form-review-btn").click(function (e) {
         success: function (res) {
             if ($(`#review-message-${id}`).length) {
                 $(`#review-message-${id}`).text($(`#textarea-${id}`).val());
+
+                for(let i = 0; i < $(`#input-${id}`).val(); i++) {
+                    $(`#star-content-${id}`).append('<i class="fa-solid fa-star"></i>');
+                }
+
+                for(let i = $(`#input-${id}`).val(); i < 5; i++) {
+                    $(`#star-content-${id}`).append('<i class="fa-regular fa-star"></i>');
+                }
+
                 $(`#article-${id}`).show();
                 form.hide();
             } else {

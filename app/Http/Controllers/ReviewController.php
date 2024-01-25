@@ -37,13 +37,15 @@ class ReviewController extends Controller
 
         $item = OrderItems::whereId($id)->where('user_id', Auth::user()->id)->firstOrFail();
         $review = BookReview::where('book_id', $item->book_id)->where('user_id', Auth::user()->id)->first();
+        $all_reviews = BookReview::where('book_id', $item->book_id)->where('user_id', Auth::user()->id)->get();
+        $message = 'created';
 
         if($review) {
             $review->update([
                 'message' => $request->input('message'),
                 'rating' =>  $request->input('rating'),
             ]);
-            return response()->json(['message' => 'updated'], 200);
+            $message = 'updated';
         } else {
             BookReview::create([
                 'message' => $request->input('message'),
@@ -53,7 +55,11 @@ class ReviewController extends Controller
              ]);
         }
 
-        return response()->json(['message' => 'created'], 200);
+        Book::whereId($item->book_id)->update([
+            'rating' => round($all_reviews->avg('rating'), 1),
+        ]);
+
+        return response()->json(['message' => $message], 200);
     }
 
     public function show($id) {

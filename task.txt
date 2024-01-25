@@ -1,1 +1,1 @@
-book images
+star doesnt update after review update

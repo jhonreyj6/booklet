@@ -25,4 +25,8 @@ class Order extends Model
     public function getBookDetails() {
         return $this->hasMany('App\Models\Book', 'id', json_decode('order_items_id'));
     }
+
+    // public function getBookDetails() {
+    //     return $this->belongsToMany('App\Models\Book', 'order_items_id', 'id');
+    // }
 }

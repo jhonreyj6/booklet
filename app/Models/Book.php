@@ -23,6 +23,10 @@ class Book extends Model
 
     protected $table = 'books';
 
+    protected $casts = [
+        'rating' => 'integer',
+    ];
+
     public function getAllReviews() {
         return $this->hasMany('App\Models\BookReview', 'book_id');
     }

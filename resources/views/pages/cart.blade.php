@@ -20,14 +20,14 @@
                             <input id="checkbox-{{ $item->id }}" type="checkbox" value="{{ $item->id }}"
                                 name="cart_items_id[]"
                                 data-price="{{ $item->getBookDetails->price }}"
-                                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                class="w-5 h-5 ml-10 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         </div>
-                        <div class="flex items-center -mx-8 px-6 py-5 mb-2">
-                            <div class="flex w-2/4"> <!-- product -->
-                                <div class="w-20">
+                        <div class="flex items-center py-5 mb-2">
+                            <div class="flex flex-row gap-4 w-2/4"> <!-- product -->
+                                <div class="w-24">
                                     <label for="checkbox-{{ $item->id }}">
-                                        <img class="h-24"
-                                            src="https://drive.google.com/uc?id=18KkAVkGFvaGNqPy2DIvTqmUH_nk39o3z"
+                                        <img class="h-24 w-24"
+                                            src="{{ $item->getBookDetails->image ? '/assets/img/' . $item->getBookDetails->image : '/assets/img/empty_book.jpg' }}"
                                             alt="">
                                     </label>
                                 </div>

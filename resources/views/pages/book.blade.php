@@ -4,7 +4,7 @@
         <div class="border p-4 rounded mb-4 shadow">
             <div class="flex flex-row gap-8">
                 <div class="w-96">
-                    <img src="https://m.media-amazon.com/images/I/616BYPbOCyL._AC_UF1000,1000_QL80_.jpg" class="w-full h-64"
+                    <img src="{{ $book->image ? '/assets/img/' . $book->image : '/assets/img/empty_book.jpg'}}" class="w-full h-64"
                         alt="">
                 </div>
                 <div class="w-full">

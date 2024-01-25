@@ -13,7 +13,7 @@
                         @csrf
                         <div class="flex flex-row gap-2 mt-4 mb-4">
                             <div>
-                                <img src="" alt="" class="w-10 h-10">
+                                <img src="{{ $item->getBookDetails->image ? '/assets/img/' . $item->getBookDetails->image : '/assets/img/empty_book.jpg' }}" alt="" class="w-12 h-12">
                             </div>
                             <div class="mb-4 -mt-1">
                                 <h4>{{ $item->getBookDetails->name }}</h4>
@@ -47,11 +47,11 @@
                     </form>
                     <article class="border-b pb-4 border-blue-500" id="article-{{ $item->id }}">
                         <div class="flex items-center mt-4 mb-2">
-                            <img class="w-10 h-10 me-4" src="https://www.w3schools.com/howto/img_avatar.png" alt="">
+                            <img class="w-12 h-12 me-4" src="{{ $item->getBookDetails->image ? '/assets/img/' . $item->getBookDetails->image : '/assets/img/empty_book.jpg' }}" alt="">
                             <div class="font-medium text-blue-500">
                                 <h3>{{ $item->getBookDetails->name }}
                                 </h3>
-                                <div class="flex flex-row items-center text-yellow-400">
+                                <div class="flex flex-row items-center text-yellow-400" id="star-content-{{ $item->id }}">
                                     @for ($i = 0; $i < $item->getAuthReviews->rating; $i++)
                                         <i class="fa-solid fa-star"></i>
                                     @endfor
@@ -78,7 +78,7 @@
                         @csrf
                         <div class="flex flex-row gap-2 mt-4 mb-4">
                             <div>
-                                <img src="" alt="" class="w-10 h-10">
+                                <img src="{{ $item->getBookDetails->image ? '/assets/img/' . $item->getBookDetails->image : '/assets/img/empty_book.jpg' }}" alt="" class="w-12 h-12">
                             </div>
                             <div class="mb-4 -mt-1">
                                 <h4>{{ $item->getBookDetails->name }}</h4>

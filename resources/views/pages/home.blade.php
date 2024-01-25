@@ -21,7 +21,7 @@
                 <div class="grid md:grid-cols-4 lg:grid-cols-5 sm:grid-cols-1 gap-4 mb-8">
                     @foreach ($books as $book)
                         <div class="border rounded-sm flex flex-col">
-                            <img src="https://m.media-amazon.com/images/I/616BYPbOCyL._AC_UF1000,1000_QL80_.jpg"
+                            <img src="{{ $book->image ? '/assets/img/' . $book->image : '/assets/img/empty_book.jpg'}}"
                                 class="h-44 w-full" alt="">
                             <div class="p-2">
                                 <div>
@@ -47,9 +47,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="mb-3 mt-auto text-center">
+                            <div class="mb-6 mt-auto text-center">
                                 <a href="/book?id={{ $book->id }}&name?={{ $book->name }}"
-                                    class="py-1.5 rounded bg-blue-700 text-white px-4">Add to Cart</a>
+                                    class="py-1.5 rounded bg-blue-700 text-white px-4">Checkout</a>
                             </div>
                         </div>
                     @endforeach
