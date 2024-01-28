@@ -1,1 +1,2 @@
-star doesnt update after review update
+update profile ternary condition: update address only
+

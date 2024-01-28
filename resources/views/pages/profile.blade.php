@@ -51,22 +51,22 @@
                             <div class="w-full flex flex-col gap-4">
                                 <label for="first_name" class="text-xl">First Name</label>
                                 <input type="text" class="outline w-full outline-blue-500 px-4 py-2 rounded"
-                                    name="first_name" id="first_name" placeholder="{{ Auth::user()->first_name }}">
+                                    name="first_name" id="first_name" value="{{ Auth::user()->first_name }}">
                             </div>
                             <div class="w-full flex flex-col gap-4">
                                 <label for="last_name" class="text-xl">Last Name</label>
                                 <input type="text" class="outline w-full outline-blue-500 px-4 py-2 rounded"
-                                    name="last_name" id="last_name" placeholder="{{ Auth::user()->last_name }}">
+                                    name="last_name" id="last_name" value="{{ Auth::user()->last_name }}">
                             </div>
                         </div>
                         <div class="w-full flex flex-col gap-4 mb-4">
                             <label for="email" class="text-xl">Email</label>
                             <input type="email" class="outline w-full outline-blue-500 px-4 py-2 rounded" disabled
-                                id="email" placeholder="{{ Auth::user()->email }}">
+                                id="email" value="{{ Auth::user()->email }}">
                         </div>
                         <div class="w-full flex flex-col gap-4 mb-8">
                             <label for="address" class="text-xl">Address</label>
-                            <input type="text" class="outline w-full outline-blue-500 px-4 py-2 rounded" id="address" name="address" placeholder="{{ Auth::user()->address }}">
+                            <input type="text" class="outline w-full outline-blue-500 px-4 py-2 rounded" id="address" name="address" value="{{ Auth::user()->address }}">
                         </div>
 
                         <div class="text-center"><button type="submit"
