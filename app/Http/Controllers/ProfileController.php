@@ -76,8 +76,8 @@ class ProfileController extends Controller
 
         $user = User::whereId(Auth::id())->firstOrFail();
         $user->update([
-            'first_name' => $request->input('first_name'),
-            'last_name' => $request->input('last_name'),
+            'first_name' => $request->input('first_name') ? $request->input('first_name') : $user->first_name ,
+            'last_name' => $request->input('last_name') ? $request->input('last_name') : $user->last_name,
             'address'=> $request->input('address'),
         ]);
 
