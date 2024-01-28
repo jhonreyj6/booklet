@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login');
 Route::post('/logout', 'App\Http\Controllers\Auth\LoginController@logout');

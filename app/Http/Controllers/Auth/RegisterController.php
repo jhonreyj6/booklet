@@ -48,21 +48,21 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        $validator = Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
-            'confirm_password' => ['same:password|required'],
-        ]);
+    // protected function validator(array $data)
+    // {
+    //     $validator = Validator::make($data, [
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+    //         'password' => ['required', 'string', 'min:8'],
+    //         'confirm_password' => ['same:password|required'],
+    //     ]);
 
 
-        if($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+    //     if($validator->fails()) {
+    //         return redirect()->back()->withErrors($validator)->withInput();
+    //     }
 
-    }
+    // }
 
     /**
      * Create a new user instance after a valid registration.
@@ -86,14 +86,13 @@ class RegisterController extends Controller
             'last_name' => ['required', 'string', 'max:20'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
-            'confirm_password' => ['same:password|required'],
+            'confirm_password' => ['same:password'],
         ]);
 
         if($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // $this->validator($request->all());
         $this->create($request->all());
         return redirect('/login');
     }
