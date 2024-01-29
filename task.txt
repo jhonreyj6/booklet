@@ -1,2 +1,4 @@
-update profile ternary condition: update address only
-
+error response {
+    register,
+    update profile
+}
