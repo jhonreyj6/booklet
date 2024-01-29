@@ -20,8 +20,8 @@ Route::post('/register', 'App\Http\Controllers\Auth\RegisterController@register'
 Route::get('/search', 'App\Http\Controllers\SearchController@index')->name('search');
 
 Route::group(['prefix' => 'auth'], function ($router) {
-    Route::get('/redirect/{provider}', 'App\Http\Controllers\SocialiteController@redirect');
-    Route::get('/callback/{provider}', 'App\Http\Controllers\SocialiteController@callback');
+    Route::get('/redirect/{provider}', 'App\Http\Controllers\SocialiteController@redirect')->name('redirect.provider');
+    Route::get('/callback/{provider}', 'App\Http\Controllers\SocialiteController@callback')->name('callback.provider');
 });
 
 Route::group(['prefix' => 'book', 'middleware' => 'auth'], function ($router) {

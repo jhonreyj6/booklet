@@ -9,10 +9,10 @@
             <div class="mb-4">
                 <div class="grid grid-cols-2 gap-4">
                     <div class="col-span-1 text-lg">
-                        <a href="/auth/redirect/facebook" class="block text-center py-2 rounded font-semibold bg-blue-700 text-white"><i class="fa-brands fa-square-facebook"></i> Facebook</a>
+                        <a href="{{ route('redirect.provider', ['provider' => 'facebook']) }}" class="block text-center py-2 rounded font-semibold bg-blue-700 text-white"><i class="fa-brands fa-square-facebook"></i> Facebook</a>
                     </div>
                     <div class="col-span-1 text-lg">
-                        <a href="/auth/redirect/google" class="text-center block py-2 rounded font-semibold bg-red-500 text-white"><i class="fa-brands fa-google"></i> Google</a>
+                        <a href="{{ route('redirect.provider', ['provider' => 'google']) }}" class="text-center block py-2 rounded font-semibold bg-red-500 text-white"><i class="fa-brands fa-google"></i> Google</a>
                     </div>
                 </div>
             </div>

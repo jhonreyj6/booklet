@@ -1,4 +1,1 @@
-error response {
-    register,
-    update profile
-}
+facebook and google login
