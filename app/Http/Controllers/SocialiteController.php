@@ -32,7 +32,9 @@ class SocialiteController extends Controller
                     'provider' => $provider,
                 ]);
             } else {
-                return redirect('/login')->with('error','Email has already taken!');
+                return redirect('/login')->withErrors([
+                    'email' => 'Email has already taken!.',
+                ]);
             }
         }
 
