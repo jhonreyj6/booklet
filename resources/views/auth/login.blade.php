@@ -47,7 +47,7 @@
                     </div>
                     @if ($errors->any())
                     @foreach ($errors->all() as $error)
-                        <div class="text-red-500 mb-2">
+                        <div class="text-red-500">
                             {{ $error }}
                         </div>
                         @endforeach

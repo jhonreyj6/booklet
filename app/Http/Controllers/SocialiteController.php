@@ -33,7 +33,7 @@ class SocialiteController extends Controller
                 ]);
             } else {
                 return redirect('/login')->withErrors([
-                    'email' => 'Email has already taken!.',
+                    'email' => 'Email has already taken!',
                 ]);
             }
         }
