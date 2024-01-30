@@ -20,15 +20,20 @@ class SocialiteController extends Controller
         $user = User::where([
             "provider" => $provider,
             "provider_id" => $data->getId(),
-        ])->orWhere('email', $data->email)->first();
+        ])->first();
 
         if (!$user) {
-            $user = User::create([
-                'first_name' => $data->name,
-                'email' => $data->email,
-                'provider_id' => $data->id,
-                'provider' => $provider,
-            ]);
+            $exist = User::where('email', $data->getEmail())->first();
+            if(!$exist) {
+                $user = User::create([
+                    'first_name' => $data->name,
+                    'email' => $data->email,
+                    'provider_id' => $data->id,
+                    'provider' => $provider,
+                ]);
+            } else {
+                return redirect('/login')->with('error','Email has already taken!');
+            }
         }
 
         Auth::login($user);
