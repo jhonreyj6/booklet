@@ -20,15 +20,15 @@ class SocialiteController extends Controller
         $user = User::where([
             "provider" => $provider,
             "provider_id" => $data->getId(),
+            "email" => $data->email,
         ])->first();
 
         if (!$user) {
             $user = User::create([
-                'first_name' => $data->getName(),
-                'email' => $data->getEmail(),
-                'provider_token' => $data->token,
-                'provider_id' => $data->getId(),
-                'provider' => $provider
+                'first_name' => $data->name,
+                'email' => $data->email,
+                'provider_id' => $data->id,
+                'provider' => $provider,
             ]);
         }
 

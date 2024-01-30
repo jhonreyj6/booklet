@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('profile_img')->nullable();
             $table->string('provider')->nullable();
-            $table->integer('provider_id')->nullable();
-            $table->integer('provider_token')->nullable();
+            $table->string('provider_id', 50)->nullable();
+            // $table->integer('provider_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
