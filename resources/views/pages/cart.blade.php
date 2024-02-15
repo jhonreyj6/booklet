@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Cart')
 @section('content')
     <form class="container mx-auto mt-24" action="/order" method="POST">
         @csrf

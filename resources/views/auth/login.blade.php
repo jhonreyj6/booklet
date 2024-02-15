@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Booklit Login Account')
 @section('content')
     <div class="mt-32">
         <div class="max-w-md mx-auto">

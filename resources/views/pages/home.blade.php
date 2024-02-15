@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Booklit')
 @section('content')
     <div class="flex flex-row gap-8 px-4">
         @include('templates.aside')

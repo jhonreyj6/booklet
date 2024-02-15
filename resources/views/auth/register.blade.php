@@ -1,4 +1,5 @@
 @extends('../layouts/app')
+@section('title', 'Register in Booklit')
 @section('content')
     <section class="bg-gray-50 mt-32">
         <div class="flex flex-col items-center justify-center px-6 mx-auto max-w-2xl">

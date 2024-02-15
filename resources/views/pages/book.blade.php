@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Order a book')
 @section('content')
     <div class="mt-24 max-w-5xl mx-auto">
         <div class="border p-4 rounded mb-4 shadow">
