@@ -25,7 +25,7 @@ Route::group(['prefix' => 'auth'], function ($router) {
 });
 
 Route::group(['prefix' => 'book', 'middleware' => 'auth'], function ($router) {
-    Route::get('/', 'App\Http\Controllers\BookController@index')->withoutMiddleware('auth');
+    Route::get('/', 'App\Http\Controllers\BookController@index')->withoutMiddleware('auth')->name('book');
     Route::get('/reviews', 'App\Http\Controllers\ReviewController@index')->withoutMiddleware('auth');
 });
 

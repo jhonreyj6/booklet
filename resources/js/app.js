@@ -86,11 +86,11 @@ $("#all-star").on("click", function (e) {
     });
 });
 
-$(document).ready ( function () {
-    $(document).on ("click", ".review-next-page", function () {
+$(document).ready(function () {
+    $(document).on("click", ".review-next-page", function () {
         $.ajax({
             type: "GET",
-            url: $(this).data('next-page'),
+            url: $(this).data("next-page"),
             data: {
                 id: $("#review-content").data("id"),
             },
@@ -100,10 +100,10 @@ $(document).ready ( function () {
             },
         });
     });
-    $(document).on ("click", ".review-prev-page", function () {
+    $(document).on("click", ".review-prev-page", function () {
         $.ajax({
             type: "GET",
-            url: $(this).data('prev-page'),
+            url: $(this).data("prev-page"),
             data: {
                 id: $("#review-content").data("id"),
             },
@@ -113,10 +113,10 @@ $(document).ready ( function () {
             },
         });
     });
-    $(document).on ("click", ".review-current-page", function () {
+    $(document).on("click", ".review-current-page", function () {
         $.ajax({
             type: "GET",
-            url: $(this).data('current-page'),
+            url: $(this).data("current-page"),
             data: {
                 id: $("#review-content").data("id"),
             },
@@ -144,15 +144,12 @@ $(document).ready(function () {
     }
 });
 
-$(window).on("click", function (e) {
-    //here
-});
-
 $('input[name="cart_items_id[]"]').change(function (e) {
+    console.log("error");
     let subtotal = 0;
     let voucher = 0;
     let item_selected_count = 0;
-    $('input[name="cart_items_id[]').each(function () {
+    $('input[name="cart_items_id[]"').each(function () {
         if ($(this).is(":checked")) {
             subtotal = subtotal += $(this).data("price");
             item_selected_count = item_selected_count += 1;
@@ -209,12 +206,16 @@ $(".form-review-btn").click(function (e) {
             if ($(`#review-message-${id}`).length) {
                 $(`#review-message-${id}`).text($(`#textarea-${id}`).val());
 
-                for(let i = 0; i < $(`#input-${id}`).val(); i++) {
-                    $(`#star-content-${id}`).append('<i class="fa-solid fa-star"></i>');
+                for (let i = 0; i < $(`#input-${id}`).val(); i++) {
+                    $(`#star-content-${id}`).append(
+                        '<i class="fa-solid fa-star"></i>'
+                    );
                 }
 
-                for(let i = $(`#input-${id}`).val(); i < 5; i++) {
-                    $(`#star-content-${id}`).append('<i class="fa-regular fa-star"></i>');
+                for (let i = $(`#input-${id}`).val(); i < 5; i++) {
+                    $(`#star-content-${id}`).append(
+                        '<i class="fa-regular fa-star"></i>'
+                    );
                 }
 
                 $(`#article-${id}`).show();
@@ -270,3 +271,27 @@ $("#profile-input").change(function (e) {
         },
     });
 });
+
+// $('input[name="language[]"]').change(function (e) {
+//     let url = $('meta[name="url"]').prop('content');
+
+//     return;
+//     $.ajax({
+//         type: "GET",
+//         url: url,
+//         params: {
+
+//         },
+//         dataType: "dataType",
+//         success: function (response) {},
+//     });
+// });
+
+// $('#form_language').submit(function (e) {
+//     e.preventDefault();
+//     let formData = $(this).serialize(); //outputs firstname=blah&lastname=moreblah
+//     let fullUrl = window.location.href;
+//     let queryPart = fullUrl.split("?")[1]; //here you have country=usa&state=ny
+//     let finalForm = queryPart + "&" + formData;  //country=usa&state=ny&firstname=blah
+//     window.location.href = window.location.origin + '/search?' + finalForm;
+// });

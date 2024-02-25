@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('title', 'Booklit')
 @section('content')
-    <div class="flex flex-row gap-8 px-4">
+    <div class="flex flex-row gap-8 px-4 max-w-6xl mx-auto">
         @include('templates.aside')
         <div class="mt-24 w-full">
             {{-- Search --}}
             <form method="GET" action="/search" autocomplete="on" class="mb-4">
-                <div class="relative">
+                <div class="relative mb-8">
                     <input type="text" name="query"
                         class="py-3 px-4 pe-11 block w-full border border-blue-500 bg-blue-50 shadow-sm rounded-lg text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
                         value="{{ request()->query('query') }}" placeholder="Search Book">
@@ -50,7 +50,7 @@
                             </div>
                             <div class="mb-6 mt-auto text-center">
                                 <a href="/book?id={{ $book->id }}&name?={{ $book->name }}"
-                                    class="py-1.5 rounded bg-blue-700 text-white px-4">Checkout</a>
+                                    class="py-1.5 rounded bg-blue-700 text-white px-4">Add to Cart</a>
                             </div>
                         </div>
                     @endforeach

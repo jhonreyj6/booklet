@@ -1,5 +1,5 @@
 <nav class="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-    <div class="max-w-screen-7xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <div class="max-w-6xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="https://flowbite.com/docs/images/logo.svg" class="h-8" alt="Flowbite Logo">
         </a>
@@ -29,12 +29,14 @@
                         class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600"
                         id="user-menu-button" aria-expanded="false">
                         <span class="sr-only">Open user menu</span>
-                        @if(Auth::user()->profile_img)
-                            <img class="w-8 h-8 rounded-full" src="/storage/user/{{ Auth::id() }}/image/profile/{{ Auth::user()->profile_img }}"
-                        alt="user photo">
+                        @if (Auth::user()->profile_img)
+                            <img class="w-8 h-8 rounded-full"
+                                src="/storage/user/{{ Auth::id() }}/image/profile/{{ Auth::user()->profile_img }}"
+                                alt="user photo">
                         @else
-                            <img class="w-8 h-8 rounded-full" src="https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png"
-                            alt="user photo">
+                            <img class="w-8 h-8 rounded-full"
+                                src="https://www.shareicon.net/data/512x512/2016/05/24/770117_people_512x512.png"
+                                alt="user photo">
                         @endif
                     </button>
                     <!-- Dropdown menu -->
@@ -42,12 +44,16 @@
                         id="user-dropdown">
                         <div class="py-3">
                             <span class="block text-sm text-gray-900 dark:text-white"></span>
-                            <a href="/user/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My Profile</a>
+                            <a href="/user/profile"
+                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">My
+                                Profile</a>
                         </div>
                         <ul class="py-2 flex flex-col justify-items-start" aria-labelledby="user-menu-button">
                             <li>
                                 <a href="/cart"
-                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Cart</a>
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                    Cart
+                                </a>
                             </li>
                             <li>
                                 <a href="/order"
@@ -58,8 +64,7 @@
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Setting</a>
                             </li>
                             <li>
-                                <a href="#!"
-                                    id="logout"
+                                <a href="#!" id="logout"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logout</a>
                             </li>
                         </ul>
