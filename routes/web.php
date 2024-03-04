@@ -33,6 +33,9 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth'], function ($router) {
     Route::get('/profile', 'App\Http\Controllers\ProfileController@index');
     Route::patch('/profile', 'App\Http\Controllers\ProfileController@update');
     Route::post('/profile/image', 'App\Http\Controllers\ProfileController@store');
+    Route::get('/membership', 'App\Http\Controllers\MembershipController@index');
+    Route::get('/membership/{type}', 'App\Http\Controllers\MembershipController@show');
+    Route::post('/membership/{type}', 'App\Http\Controllers\MembershipController@store');
 });
 
 Route::group(['prefix' => 'cart', 'middleware' => 'auth'], function ($router) {
@@ -55,6 +58,7 @@ Route::group(['prefix' => 'order', 'middleware' => 'auth'], function ($router) {
 
     Route::get('/payment/success', 'App\Http\Controllers\PaymentController@successPayment')->name('payment.success');
     Route::get('/payment/cancel', 'App\Http\Controllers\PaymentController@cancelPayment')->name('payment.cancel');
+
     Route::get('/payment/{id}', 'App\Http\Controllers\PaymentController@create')->name('payment.view');
     Route::post('/payment/{id}', 'App\Http\Controllers\PaymentController@singleCharge')->name('single.charge');
 });
